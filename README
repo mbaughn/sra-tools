@@ -48,7 +48,7 @@ Note the name of the directory that tar created. The name of this directory chan
 3. For convenience (and to show you where the binaries are) append the path to the binaries to your PATH environment variable:
 Add this path to your .bashrc
 
-export PATH=$PATH:$PWD/sratoolkit.2.5.7-ubuntu64/bin
+export PATH=$PATH:$HOME/sratoolkit.2.5.7-ubuntu64/bin/fastq-dump
 
 source .bashrc
 
