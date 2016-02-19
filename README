@@ -1,3 +1,78 @@
+https://github.com/ncbi/sra-tools.wiki.git
+
+The SRA Toolkit provides 64-bit binary installations for the Ubuntu and CentOS Linux distributions, for Mac OS X, and for Windows.
+
+The current binaries for:
+
+OS	are available here
+Windows	sratoolkit.current-win64.zip
+Ubuntu	sratoolkit.current-ubuntu64.tar.gz
+CentOS	sratoolkit.current-centos_linux64.tar.gz
+Mac OS X	sratoolkit.current-mac64.tar.gz
+For installing on Windows:
+
+Download the zip file from the link given above
+Extract it to your desktop, for example
+Open a command shell, for example Start/Run cmd.exe
+cd to the directory you extracted the zip file to, for example Desktop
+cd bin
+Test that the toolkit is functional:
+fastq-dump --stdout -X 2 SRR390728
+Within a few seconds, the command should produce this exact output (and nothing else):
+
+Read 2 spots for SRR390728
+Written 2 spots for SRR390728
+@SRR390728.1 1 length=72
+CATTCTTCACGTAGTTCTCGAGCCTTGGTTTTCAGCGATGGAGAATGACTTTGACAAGCTGAGAGAAGNTNC
++SRR390728.1 1 length=72
+;;;;;;;;;;;;;;;;;;;;;;;;;;;9;;665142;;;;;;;;;;;;;;;;;;;;;;;;;;;;;96&&&&(
+@SRR390728.2 2 length=72
+AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
++SRR390728.2 2 length=72
+;;;;;;;;;;;;;;;;;4;;;;3;393.1+4&&5&&;;;;;;;;;;;;;;;;;;;;;<9;<;;;;;464262
+The installation processes for Mac OS X and the two Linux distributions are roughly identical.
+
+1. Fetch the tar file from the canonical location at NCBI:
+
+For Ubuntu,
+wget --output-document sratoolkit.tar.gz http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz
+For CentOS,
+wget --output-document sratoolkit.tar.gz http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-centos_linux64.tar.gz
+For Mac OS X, (or use wget if you prefer)
+curl --output sratoolkit.tar.gz http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-mac64.tar.gz
+2. Extract the contents of the tar file:
+
+tar -vxzf sratoolkit.tar.gz
+Note the name of the directory that tar created. The name of this directory changes with each release and varies by platform, i.e. it follows the pattern sratoolkit.<release>-<platform> e.g. sratoolkit.2.4.0-1-mac64 for the 2.4.0-1 release for Mac OS X.
+
+3. For convenience (and to show you where the binaries are) append the path to the binaries to your PATH environment variable:
+Add this path to your .bashrc
+
+export PATH=$PATH:$PWD/sratoolkit.2.5.7-ubuntu64/bin
+
+source .bashrc
+
+4. Verify that the binaries will be found by the shell:
+
+which fastq-dump
+This should produce output similar to:
+
+/Users/JoeUser/sratoolkit.2.4.0-1.mac64/bin/fastq-dump
+5. Test that the toolkit is functional:
+
+fastq-dump --stdout SRR390728 | head -n 8
+Within a few seconds, the command should produce this exact output (and nothing else):
+
+@SRR390728.1 1 length=72
+CATTCTTCACGTAGTTCTCGAGCCTTGGTTTTCAGCGATGGAGAATGACTTTGACAAGCTGAGAGAAGNTNC
++SRR390728.1 1 length=72
+;;;;;;;;;;;;;;;;;;;;;;;;;;;9;;665142;;;;;;;;;;;;;;;;;;;;;;;;;;;;;96&&&&(
+@SRR390728.2 2 length=72
+AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
++SRR390728.2 2 length=72
+;;;;;;;;;;;;;;;;;4;;;;3;393.1+4&&5&&;;;;;;;;;;;;;;;;;;;;;<9;<;;;;;464262
+
+
 # ===========================================================================
 #
 #                            PUBLIC DOMAIN NOTICE
